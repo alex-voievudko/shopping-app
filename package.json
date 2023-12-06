@@ -2,7 +2,12 @@
   "name": "@immfly-v2/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "db:docker": "docker-compose up -d",
+    "db:push": "nx run immfly-api:prisma-push",
+    "db:seed": "npx prisma db seed",
+    "db:studio": "nx run immfly-api:prisma-studio"
+  },
   "private": true,
   "dependencies": {
     "@expo/metro-config": "~0.10.7",
@@ -69,5 +74,8 @@
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
     "typescript": "~5.2.2"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} apps/immfly-api/prisma/seed.ts"
   }
 }
