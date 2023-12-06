@@ -1,21 +1,25 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
-import express from 'express';
-import * as path from 'path';
+import express, { Request, Response, Errback, NextFunction } from 'express';
+import cors from 'cors';
+import { productsRoutes } from './routes/products.routes';
+import { paymentsRoutes } from './routes/payments.routes';
 
 const app = express();
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+app.use(cors());
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to immfly-api!' });
+// Error handling middleware
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+app.use((err: Errback, req: Request, res: Response, next: NextFunction) => {
+  console.error(err);
+  res.status(500).send('Something broke!');
 });
+
+app.use('/api/products', productsRoutes);
+app.use('/api/payments', paymentsRoutes);
 
 const port = process.env.PORT || 3333;
 const server = app.listen(port, () => {
   console.log(`Listening at http://localhost:${port}/api`);
 });
+
 server.on('error', console.error);
