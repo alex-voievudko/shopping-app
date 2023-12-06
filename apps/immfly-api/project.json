@@ -1,0 +1,57 @@
+{
+  "name": "immfly-api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/immfly-api/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/immfly-api",
+        "main": "apps/immfly-api/src/main.ts",
+        "tsConfig": "apps/immfly-api/tsconfig.app.json",
+        "assets": ["apps/immfly-api/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/immfly-api/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "immfly-api:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "immfly-api:build:development"
+        },
+        "production": {
+          "buildTarget": "immfly-api:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/immfly-api/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/immfly-api/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
