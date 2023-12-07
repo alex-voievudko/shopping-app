@@ -17,7 +17,12 @@ export const CurrencyButton = ({ currencyKey, active, onPress }: CurrencyButtonP
   const textStyle = StyleSheet.flatten([styles.text, active && styles.activeText]);
 
   return (
-    <TouchableOpacity style={containerStyle} activeOpacity={0.8} onPress={() => onPress(currencyKey)}>
+    <TouchableOpacity
+      style={containerStyle}
+      activeOpacity={0.8}
+      onPress={() => onPress(currencyKey)}
+      testID={`currency-button-${currencyKey}`}
+    >
       <Text style={textStyle}>
         {currencyFlag} {currencySymbol} - {currencyName}
       </Text>
