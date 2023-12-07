@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TouchableOpacity, Text, View } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { styles } from './CheckoutDropdown.styles';
@@ -9,11 +9,13 @@ export type Option = {
 };
 
 type CheckoutDropdownProps = {
+  children: React.ReactNode;
   options: Option[];
+  discount: number;
   onChange: (value: number) => void;
 };
 
-export const CheckoutDropdown = ({ options, onChange }: CheckoutDropdownProps) => {
+export const CheckoutDropdown = ({ children, options, discount, onChange }: CheckoutDropdownProps) => {
   const [selectedOption, setSelectedOption] = useState<Option | null>(null);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -23,8 +25,16 @@ export const CheckoutDropdown = ({ options, onChange }: CheckoutDropdownProps) =
     setShowDropdown(false);
   };
 
+  // Reset selected option when discount changes
+  useEffect(() => {
+    if (discount === 0) {
+      setSelectedOption(null);
+    }
+  }, [discount]);
+
   return (
     <View style={styles.container}>
+      {children}
       <TouchableOpacity
         style={styles.selectedOptionContainer}
         activeOpacity={0.8}
