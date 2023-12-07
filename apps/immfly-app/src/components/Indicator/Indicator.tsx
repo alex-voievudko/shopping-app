@@ -18,16 +18,24 @@ export const Indicator = ({ active, quantity, type, top, right, left, onPress }:
   const animate = () => {
     Animated.timing(scale, {
       toValue: 1,
-      duration: 500,
+      duration: 100,
       useNativeDriver: true,
-    }).start(() => {
-      scale.setValue(0);
-    });
+    }).start();
+  };
+
+  const reset = () => {
+    Animated.timing(scale, {
+      toValue: 0,
+      duration: 100,
+      useNativeDriver: true,
+    }).start();
   };
 
   useEffect(() => {
     if (active) {
       animate();
+    } else {
+      reset();
     }
   }, [active]);
 
