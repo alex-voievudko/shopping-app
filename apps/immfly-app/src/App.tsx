@@ -7,7 +7,8 @@ import { useLoadFonts, useLoadExchangeRates } from './hooks';
 SplashScreen.preventAutoHideAsync();
 
 export const App = () => {
-  const { loaded: fontsLoaded, error: fontError } = useLoadFonts();
+  const { loaded: fontLoaded, error: fontError } = useLoadFonts();
+
   // Probably not the best place to load exchange rates,
   // as the entire app will be blocked until the API responds
   // and the rates will be set to store only once when the app starts.
@@ -15,7 +16,7 @@ export const App = () => {
   // the use goes to the Products screen
   const { loading: ratesLoading, error: ratesError } = useLoadExchangeRates();
 
-  const loading = !fontsLoaded || ratesLoading;
+  const loading = !fontLoaded || ratesLoading;
   const error = fontError || ratesError;
 
   useEffect(() => {

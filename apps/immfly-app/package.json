@@ -17,7 +17,16 @@
     "@react-navigation/native-stack": "*",
     "react": "*",
     "react-native-safe-area-context": "*",
-    "@tanstack/react-query": "*"
+    "@tanstack/react-query": "*",
+    "expo-splash-screen": "*",
+    "expo-image": "*",
+    "@expo/vector-icons": "*",
+    "axios": "*",
+    "expo-font": "*",
+    "@expo-google-fonts/inter": "*",
+    "zustand": "*",
+    "expo-constants": "*",
+    "@react-native-picker/picker": "*"
   },
   "scripts": {
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/immfly-app && cp yarn.lock apps/immfly-app",
