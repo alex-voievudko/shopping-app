@@ -12,14 +12,15 @@ type CartStore = {
   totalPrice: () => number;
   actions: {
     addProduct: (product: Product) => void;
-    removeProduct: (product: Product) => void;
+    removeProduct: (id: string) => void;
+    removeAllProducts: (id: string) => void;
     clearCart: () => void;
     setDiscount: (discount: number) => void;
     clearDiscount: () => void;
   };
 };
 
-const useCartStore = create<CartStore>((set, get) => ({
+export const useCartStore = create<CartStore>((set, get) => ({
   cart: [],
   discount: 0,
   totalCount: () => get().cart.reduce((acc, item) => acc + item.quantity, 0),
@@ -40,9 +41,9 @@ const useCartStore = create<CartStore>((set, get) => ({
         set({ cart: [...cart] });
       }
     },
-    removeProduct: product => {
+    removeProduct: id => {
       const { cart } = get();
-      const index = cart.findIndex(item => item.id === product.id);
+      const index = cart.findIndex(item => item.id === id);
       if (index !== -1) {
         cart[index].quantity -= 1;
         if (cart[index].quantity === 0) {
@@ -51,14 +52,16 @@ const useCartStore = create<CartStore>((set, get) => ({
         set({ cart: [...cart] });
       }
     },
+    removeAllProducts: id => {
+      const { cart } = get();
+      const index = cart.findIndex(item => item.id === id);
+      if (index !== -1) {
+        cart.splice(index, 1);
+        set({ cart: [...cart] });
+      }
+    },
     clearCart: () => set({ cart: [] }),
     setDiscount: discount => set({ discount }),
     clearDiscount: () => set({ discount: 0 }),
   },
 }));
-
-export const useCart = () => useCartStore(store => store.cart);
-export const useCartDiscount = () => useCartStore(store => store.discount);
-export const useCartTotalCount = () => useCartStore(store => store.totalCount());
-export const useCartTotalPrice = () => useCartStore(store => store.totalPrice());
-export const useCartActions = () => useCartStore(store => store.actions);
