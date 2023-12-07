@@ -86,6 +86,7 @@ To launch the project locally, follow these steps:
 
 ## Future considerations and improvements
 
+- **Use TRPC instead of REST**: I've used REST for the backend API because it's simpler and easier to set up. However, I would consider to use TRPC in the future (if the server was not fully implemented) because it's a more modern approach and it provides a better developer experience as well as better performance.
 - **Skeleton loading**: Implement skeleton loading to improve the user experience while data is being fetched.
 - **Add more visibility to the currency selection**: Add some styles to the currency selection to make it more visible to the user. Currently, the user has to tap on the conversion rates text to switch currencies, which is not very intuitive.
 - **Add Success/Error modal on checkout**: Implement a modal to display a success/error message when the user completes the checkout process.
