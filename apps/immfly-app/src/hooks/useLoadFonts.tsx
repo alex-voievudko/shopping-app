@@ -1,5 +1,4 @@
-import { useFonts } from 'expo-font';
-import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
+import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 
 export const useLoadFonts = () => {
   const [loaded, error] = useFonts({

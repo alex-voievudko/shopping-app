@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios, { AxiosError } from 'axios';
-import { useSettingsActions } from '../store';
+import { useSettingsStore } from '../store';
 
 // I don't hide the API key because it's free and it's not a secret
 // This alows you to test the app without having to create an account or do anything else
@@ -11,20 +11,20 @@ const EXCHANGE_RATE_API_URL =
 export const useLoadExchangeRates = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | AxiosError | null>(null);
-  const { setExchangeRates } = useSettingsActions();
+  const { actions } = useSettingsStore();
 
   useEffect(() => {
     axios
       .get(EXCHANGE_RATE_API_URL)
       .then(response => {
-        setExchangeRates(response.data.rates);
+        actions.setExchangeRates(response.data.rates);
         setLoading(false);
       })
       .catch(error => {
         setError(error);
         setLoading(false);
       });
-  }, [setExchangeRates]);
+  }, [actions]);
 
   return { loading, error };
 };
