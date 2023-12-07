@@ -6,6 +6,7 @@ import { paymentsRoutes } from './routes/payments.routes';
 const app = express();
 
 app.use(cors());
+app.use(express.json());
 
 // Error handling middleware
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
