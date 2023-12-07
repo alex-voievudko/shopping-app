@@ -39,7 +39,59 @@ The Immfly Mobile Store application is designed to provide a seamless, user-frie
 
 To launch the project locally, follow these steps:
 
-1. [Step 1]
-2. [Step 2]
-3. [Step 3]
-   ...
+1. Copy the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/alex-voievudko/shopping-app.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd shopping-app
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   yarn install
+   ```
+
+4. Run the following command to prepare app for development:
+
+   ```bash
+   yarn prepare
+   ```
+
+   This command performs several operations:
+
+   - It executes `docker-compose up -d` to start the database container.
+   - It copies the `.env.example` file to `.env`.
+   - It runs migrations for the database.
+   - Finally, it seeds the database with initial data.
+
+5. Run the following command to start the server and mobile app in development mode:
+
+   ```bash
+   yarn dev:all
+   ```
+
+## Features added beyond the initial design
+
+- **Currency selection modal**: When the user taps on the conversion rates text, a modal is displayed to allow the user to select their preferred currency. I've added this instead of the proposed dropdown to make it more visible and convenient for the user to switch currencies.
+- **Out of stock modal**: When a user tries to add a product to the cart and the product is out of stock, a modal is displayed to inform the user that the product is out of stock.
+- **Out of stock product opacity**: When a product is out of stock, its opacity is decreased to indicate that the product is unavailable.
+- **Remove product from cart**: When the user taps on the remove icon on the product card, the product is removed from the cart. In the initial design, it was not very clear to me how the user can remove a product from the cart after the initial selection.
+- **Custom animations**: I've added some custom animations to indicators and modals to make the app more interactive and user-friendly.
+
+## Future considerations and improvements
+
+- **Skeleton loading**: Implement skeleton loading to improve the user experience while data is being fetched.
+- **Add more visibility to the currency selection**: Add some styles to the currency selection to make it more visible to the user. Currently, the user has to tap on the conversion rates text to switch currencies, which is not very intuitive.
+- **Add Success/Error modal on checkout**: Implement a modal to display a success/error message when the user completes the checkout process.
+- **Better animate the product list on the checkout screen**: Animate the product list on the checkout screen. Currently, when you swipe left to remove the product from the cart, the product list is not animated. It would be nice to animate the product list to make the user experience smoother.
+- **Save currency selection**: Persist the user's currency selection in local storage, so that the user's preferred currency is automatically selected when they return to the app.
+- **Save seat selection**: Persist the user's seat selection in local storage, so that the user's preferred seat is automatically selected when they return to the app.
+- **Decrease/Increase product stock in real-time**: Implement a feature to decrease/increase product stock in real-time instead of doing this on checkout.
+- **Better error handling**: Improve error handling by displaying a more user-friendly error message when an error occurs.
+- **Improve unit tests**: Add more unit tests to improve code coverage and ensure that the app is working as expected. Currently, I've only added a few unit tests, as I dn't have much experience with unit testing in React Native but I'm eager to learn more about it and I would love to have the opportunity to do so.
