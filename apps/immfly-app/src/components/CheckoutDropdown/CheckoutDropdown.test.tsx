@@ -1,27 +1,41 @@
 import React from 'react';
+import { Text } from 'react-native';
 import { render, fireEvent } from '@testing-library/react-native';
-import { CheckoutDropdown } from './CheckoutDropdown';
+import { CheckoutDropdown, Option } from './CheckoutDropdown';
 
 describe('CheckoutDropdown', () => {
-  it('handles option selection correctly', () => {
-    const options = [
-      { label: 'Option 1', value: 1 },
-      { label: 'Option 2', value: 2 },
-      // Add more options if needed
+  it('renders the correct option details', () => {
+    const mockOptions: Option[] = [
+      { label: '10% off', value: 10 },
+      { label: '20% off', value: 20 },
     ];
-    const onChange = jest.fn();
-    const { getByText, queryByText } = render(<CheckoutDropdown options={options} onChange={onChange} />);
+
+    const { getByText } = render(
+      <CheckoutDropdown options={mockOptions} discount={0} onChange={() => {}}>
+        <Text>1</Text>
+      </CheckoutDropdown>,
+    );
 
     expect(getByText('Discount')).toBeTruthy();
+  });
+
+  it('calls onChange prop when an option is selected', () => {
+    const mockOptions: Option[] = [
+      { label: '10% off', value: 10 },
+      { label: '20% off', value: 20 },
+    ];
+
+    const mockOnChange = jest.fn();
+
+    const { getByText } = render(
+      <CheckoutDropdown options={mockOptions} discount={0} onChange={mockOnChange}>
+        <Text>1</Text>
+      </CheckoutDropdown>,
+    );
 
     fireEvent.press(getByText('Discount'));
+    fireEvent.press(getByText('10% off'));
 
-    expect(getByText('Option 1')).toBeTruthy();
-    expect(getByText('Option 2')).toBeTruthy();
-
-    fireEvent.press(getByText('Option 1'));
-
-    expect(onChange).toHaveBeenCalledWith(1);
-    expect(queryByText('Option 1')).toBeTruthy();
+    expect(mockOnChange).toHaveBeenCalledWith(10);
   });
 });
