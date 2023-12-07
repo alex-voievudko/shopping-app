@@ -13,7 +13,7 @@ type SettingsStore = {
   };
 };
 
-const useSettingsStore = create<SettingsStore>(set => ({
+export const useSettingsStore = create<SettingsStore>(set => ({
   currency: 'EUR',
   exchangeRates: {},
   seatLetter: 'A',
@@ -25,13 +25,3 @@ const useSettingsStore = create<SettingsStore>(set => ({
     setSeatNumber: (seatNumber: number) => set({ seatNumber }),
   },
 }));
-
-export const useCurrency = () => useSettingsStore(state => state.currency);
-export const useExchangeRates = () => useSettingsStore(state => state.exchangeRates);
-export const useSeatLetter = () => useSettingsStore(state => state.seatLetter);
-export const useSeatNumber = () => useSettingsStore(state => state.seatNumber);
-export const useSetCurrency = () => useSettingsStore(state => state.actions.setCurrency);
-export const useSetExchangeRates = () => useSettingsStore(state => state.actions.setExchangeRates);
-export const useSetSeatLetter = () => useSettingsStore(state => state.actions.setSeatLetter);
-export const useSetSeatNumber = () => useSettingsStore(state => state.actions.setSeatNumber);
-export const useSettingsActions = () => useSettingsStore(state => state.actions);
