@@ -55,7 +55,12 @@ export const ModalBase = ({ title, isVisible, onClose, children }: ModalProps) =
       <Animated.View style={modalStyle}>
         {title && <Text style={styles.modalTitle}>{title}</Text>}
 
-        <TouchableOpacity style={styles.modalCloseButton} onPress={onClose} activeOpacity={0.9}>
+        <TouchableOpacity
+          style={styles.modalCloseButton}
+          onPress={onClose}
+          activeOpacity={0.9}
+          testID="modal-close-button"
+        >
           <FontAwesome name="close" style={styles.modalCloseIcon} />
         </TouchableOpacity>
 
