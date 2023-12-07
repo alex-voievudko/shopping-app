@@ -1,23 +1,25 @@
 import { Text, TouchableOpacity, StyleSheet } from 'react-native';
-import config from '../../config/config.json';
+import { getCurrencyFlag, getCurrencyName, getCurrencySymbol } from '../../utils';
 import { styles } from './CurrencyButton.styles';
 
 type CurrencyButtonProps = {
   currencyKey: string;
-  onPress: () => void;
+  active: boolean;
+  onPress: (currencyKey: string) => void;
 };
 
-export const CurrencyButton = ({ currencyKey, onPress }: CurrencyButtonProps) => {
-  const currency = config.currencies.find(currency => currency.code === currencyKey);
-  const active = currencyKey === currency?.code;
+export const CurrencyButton = ({ currencyKey, active, onPress }: CurrencyButtonProps) => {
+  const currencyFlag = getCurrencyFlag(currencyKey);
+  const currencySymbol = getCurrencySymbol(currencyKey);
+  const currencyName = getCurrencyName(currencyKey);
 
   const containerStyle = StyleSheet.flatten([styles.container, active && styles.activeContainer]);
   const textStyle = StyleSheet.flatten([styles.text, active && styles.activeText]);
 
   return (
-    <TouchableOpacity style={containerStyle} onPress={onPress}>
+    <TouchableOpacity style={containerStyle} activeOpacity={0.8} onPress={() => onPress(currencyKey)}>
       <Text style={textStyle}>
-        {currency?.flag} {currency?.code} - {currency?.name}
+        {currencyFlag} {currencySymbol} - {currencyName}
       </Text>
     </TouchableOpacity>
   );
