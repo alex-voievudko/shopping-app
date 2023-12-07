@@ -16,7 +16,9 @@ The Immfly Mobile Store application is designed to provide a seamless, user-frie
 
 ## Demo
 
-[Add a demo section with GIFs for iOS and Android placed side by side]
+| iOS                                                                                            | Android |
+| ---------------------------------------------------------------------------------------------- | ------- |
+| ![iOS Demo](https://github.com/alex-voievudko/shopping-app/blob/main/screenshots/demo-ios.gif) |         |
 
 ## Technologies Used
 
