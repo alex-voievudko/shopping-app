@@ -11,8 +11,8 @@ type PaymentButtonProps = {
 export const PaymentButton = ({ title, type, onPress }: PaymentButtonProps) => {
   return (
     <TouchableOpacity style={styles.container} onPress={onPress} activeOpacity={0.8}>
-      {type === 'cash' && <FontAwesome5 name="coins" style={styles.icon} testID="coins" />}
-      {type === 'card' && <FontAwesome5 name="credit-card" style={styles.icon} testID="card" />}
+      {type === 'cash' && <FontAwesome5 name="coins" style={styles.icon} />}
+      {type === 'card' && <FontAwesome5 name="credit-card" style={styles.icon} />}
       <Text style={styles.title}>{title}</Text>
     </TouchableOpacity>
   );
