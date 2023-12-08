@@ -60,3 +60,6 @@ apps/immfly-app-e2e/artifacts
 
 .env
 .env.*
+
+ios
+android
