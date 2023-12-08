@@ -16,9 +16,9 @@ The Immfly Mobile Store application is designed to provide a seamless, user-frie
 
 ## Demo
 
-| iOS                                                                                            | Android |
-| ---------------------------------------------------------------------------------------------- | ------- |
-| ![iOS Demo](https://github.com/alex-voievudko/shopping-app/blob/main/screenshots/demo-ios.gif) |         |
+| iOS                                                                                            | Android                                                                                                |
+| ---------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| ![iOS Demo](https://github.com/alex-voievudko/shopping-app/blob/main/screenshots/demo-ios.gif) | ![Android Demo](https://github.com/alex-voievudko/shopping-app/blob/main/screenshots/demo-android.gif) |
 
 ## Technologies Used
 
@@ -57,24 +57,43 @@ To launch the project locally, follow these steps:
    yarn install
    ```
 
-4. Run the following command to prepare app for development:
+4. Copy the `.env.example` file and rename it to `.env`:
 
    ```bash
-   yarn prepare
+   cp .env.example .env
    ```
 
-   This command performs several operations:
+5. Run the command to prepare the database:
 
-   - It executes `docker-compose up -d` to start the database container.
-   - It copies the `.env.example` file to `.env`.
-   - It runs migrations for the database.
-   - Finally, it seeds the database with initial data.
+   ```bash
+   yarn db:prestart
+   ```
 
-5. Run the following command to start the server and mobile app in development mode:
+   It will run the following commands:
+
+   - `docker-compose up -d` - starts the database container
+   - `yarn db:migrate` - runs the database migrations
+   - `yarn db:seed` - seeds the database with initial data
+
+6. Start the backend server:
+
+   ```bash
+   yarn dev:server
+   ```
+
+7. Start the expo server:
+
+   ```bash
+   yarn dev:expo
+   ```
+
+   Alternatively, you can run the following command to start both the backend server and the expo server:
 
    ```bash
    yarn dev:all
    ```
+
+8. Open the Expo Go app on your mobile device and scan the QR code displayed in the terminal to launch the app.
 
 ## Features added beyond the initial design
 
