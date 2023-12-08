@@ -14,5 +14,5 @@ export const getUrl = () => {
     return 'https://my-app.com'; // This is just usage example should be replaced with real url
   }
 
-  return 'http://localhost:3000';
+  return 'http://localhost:3333';
 };
