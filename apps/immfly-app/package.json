@@ -26,10 +26,18 @@
     "@expo-google-fonts/inter": "*",
     "zustand": "*",
     "expo-constants": "*",
-    "@react-native-picker/picker": "*"
+    "@react-native-picker/picker": "*",
+    "react-native-swipe-list-view": "*",
+    "expo-status-bar": "~1.6.0",
+    "@babel/core": "*"
   },
   "scripts": {
     "eas-build-pre-install": "cd ../../ && node tools/scripts/eas-build-pre-install.mjs . apps/immfly-app && cp yarn.lock apps/immfly-app",
-    "eas-build-post-install": "cd ../../ && node tools/scripts/eas-build-post-install.mjs . apps/immfly-app"
+    "eas-build-post-install": "cd ../../ && node tools/scripts/eas-build-post-install.mjs . apps/immfly-app",
+    "android": "expo run:android",
+    "ios": "expo run:ios"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.0"
   }
 }

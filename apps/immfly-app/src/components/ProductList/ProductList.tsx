@@ -12,7 +12,7 @@ export const ProductList = () => {
 
   if (isLoading) {
     return (
-      <View style={styles.container}>
+      <View style={styles.loadingContainer}>
         <Text>Loading...</Text>
       </View>
     );
@@ -20,7 +20,7 @@ export const ProductList = () => {
 
   if (isError) {
     return (
-      <View style={styles.container}>
+      <View style={styles.loadingContainer}>
         <Text>Error</Text>
       </View>
     );

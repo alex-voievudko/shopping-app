@@ -28,7 +28,8 @@
         "sync-deps"
       ],
       "options": {
-        "platform": "ios"
+        "platform": "ios",
+        "device": "iPhone 14"
       }
     },
     "run-android": {
