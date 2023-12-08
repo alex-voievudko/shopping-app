@@ -35,6 +35,15 @@ The Immfly Mobile Store application is designed to provide a seamless, user-frie
 | **Database Toolkit**       | [Prisma](https://www.prisma.io/)                 | A modern database toolkit that provides a type-safe and auto-completing database query builder for TypeScript and Node.js.                   |
 | **Containerization Tool**  | [Docker](https://www.docker.com/)                | A platform that enables developers to automate the deployment, scaling, and management of applications within containers.                    |
 
+## Source Code Structure
+
+| Path                       | Description                                              |
+| -------------------------- | -------------------------------------------------------- |
+| **apps**                   | Contains the expo and backend applications.              |
+| **apps/immfly-app**        | Contains the expo application.                           |
+| **apps/immfly-api**        | Contains the backend application.                        |
+| **apps/immfly-api/prisma** | Contains the database schema, migrations, and seed data. |
+
 ## Local Development
 
 To launch the project locally, follow these steps:
