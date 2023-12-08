@@ -104,6 +104,14 @@ To launch the project locally, follow these steps:
 
 8. Open the Expo Go app on your mobile device and scan the QR code displayed in the terminal to launch the app.
 
+## Testing
+
+To run the unit tests, run the following command:
+
+```bash
+yarn test:expo
+```
+
 ## Features added beyond the initial design
 
 - **Currency selection modal**: When the user taps on the conversion rates text, a modal is displayed to allow the user to select their preferred currency. I've added this instead of the proposed dropdown to make it more visible and convenient for the user to switch currencies.

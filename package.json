@@ -11,7 +11,8 @@
     "db:prestart": "yarn run db:docker && yarn run db:migrate && yarn run db:seed",
     "dev:server": "nx run immfly-api:serve",
     "dev:expo": "nx run immfly-app:start",
-    "dev:all": "yarn dev:server & yarn dev:expo"
+    "dev:all": "yarn dev:server & yarn dev:expo",
+    "test:expo": "nx run immfly-app:test"
   },
   "private": true,
   "dependencies": {
